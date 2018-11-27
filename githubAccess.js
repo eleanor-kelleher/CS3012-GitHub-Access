@@ -3,50 +3,42 @@ var github = require('octonode');
 var client = github.client();
 var fs = require('fs');
 
-//pcottle
-client.get('/users/pcottle', {}, function (err, status, body, headers) {
-  console.log(body);
-  fs.writeFile("./jsondata/pcottle.json", JSON.stringify(body), (error) => {
-      if (error) {
-          console.error(err);
-          return;
-      };
-      console.log("pcottle JSON file\n");
-  });
+// minimaxir - big-list-of-naughty-strings - contributors
+client.get('/repos/minimaxir/big-list-of-naughty-strings/contributors', {},
+function (err, status, body, headers) {
+  fs.appendFileSync('./relevantinfo/wagoodman-contributors',
+    "login,contributions\n");
+  for(var x in body) {
+    if(body.hasOwnProperty(x))
+      fs.appendFileSync('./relevantinfo/wagoodman-contributors', body[x].login
+        + "," + body[x].contributions + "\n");
+  }
+  //console.log(body);
 });
 
-//repo
-client.get('/repos/pcottle/learnGitBranching', {}, function (err, status, body, headers) {
-  console.log(body);
-  fs.writeFile("./jsondata/learnGitBranching.json", JSON.stringify(body), (error) => {
-      if (error) {
-          console.error(err);
-          return;
-      };
-      console.log("learnGitBranching to JSON file\n");
-  });
+
+// wagoodman - dive - contributors
+client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
+  body, headers) {
+  fs.appendFileSync('./relevantinfo/wagoodman-contributors',
+    "login,contributions\n");
+  for(var x in body) {
+    if(body.hasOwnProperty(x))
+      fs.appendFileSync('./relevantinfo/wagoodman-contributors', body[x].login
+        + "," + body[x].contributions + "\n");
+  }
+  //console.log(body);
 });
 
-//commits
-client.get('/repos/pcottle/learnGitBranching/commits', {}, function (err, status, body, headers) {
-  console.log(body);
-  fs.writeFile("./jsondata/commits.json", JSON.stringify(body), (error) => {
-      if (error) {
-          console.error(err);
-          return;
-      };
-      console.log("commits to JSON file\n");
-  });
-});
-
-//contributors
-client.get('/repos/pcottle/learnGitBranching/contributors', {}, function (err, status, body, headers) {
-  console.log(body);
-  fs.writeFile("./jsondata/contributors.json", JSON.stringify(body), (error) => {
-      if (error) {
-          console.error(err);
-          return;
-      };
-      console.log("contributors to JSON file\n");
-  });
+// pcottle - learnGitBranching - contributors
+client.get('/repos/pcottle/learnGitBranching/contributors', {}, function (err,
+  status, body, headers) {
+  fs.appendFileSync('./relevantinfo/pcottle-contributors',
+    "login,contributions\n");
+  for(var x in body) {
+    if(body.hasOwnProperty(x))
+      fs.appendFileSync('./relevantinfo/pcottle-contributors', body[x].login
+        + "," + body[x].contributions + "\n");
+  }
+  //console.log(body);
 });
