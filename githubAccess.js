@@ -10,8 +10,8 @@ function (err, status, body, headers) {
     "login,contributions\n");
   for(var x in body) {
     if(body.hasOwnProperty(x))
-      fs.appendFileSync('./relevantinfo/vue-contributors.csv', body[x].login
-        + "," + body[x].contributions + "\n");
+      fs.appendFileSync('./relevantinfo/vue-contributors.csv',
+      body[x].login + "," + body[x].contributions + "\n");
   }
   //console.log(body);
 });
@@ -23,8 +23,8 @@ function (err, status, body, headers) {
     "login,contributions\n");
   for(var x in body) {
     if(body.hasOwnProperty(x))
-      fs.appendFileSync('./relevantinfo/adobe-contributors.csv', body[x].login
-        + "," + body[x].contributions + "\n");
+      fs.appendFileSync('./relevantinfo/adobe-contributors.csv',
+      body[x].login + "," + body[x].contributions + "\n");
   }
   //console.log(body);
 });
@@ -36,8 +36,8 @@ function (err, status, body, headers) {
     "login,contributions\n");
   for(var x in body) {
     if(body.hasOwnProperty(x))
-      fs.appendFileSync('./relevantinfo/firecracker-contributors.csv', body[x].login
-        + "," + body[x].contributions + "\n");
+      fs.appendFileSync('./relevantinfo/firecracker-contributors.csv',
+      body[x].login + "," + body[x].contributions + "\n");
   }
   //console.log(body);
 });
@@ -50,8 +50,8 @@ function (err, status, body, headers) {
     "login,contributions\n");
   for(var x in body) {
     if(body.hasOwnProperty(x))
-      fs.appendFileSync('./relevantinfo/minimaxir-contributors.csv', body[x].login
-        + "," + body[x].contributions + "\n");
+      fs.appendFileSync('./relevantinfo/minimaxir-contributors.csv',
+      body[x].login + "," + body[x].contributions + "\n");
   }
   //console.log(body);
 });
@@ -63,8 +63,8 @@ client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
     "login,contributions\n");
   for(var x in body) {
     if(body.hasOwnProperty(x))
-      fs.appendFileSync('./relevantinfo/wagoodman-contributors.csv', body[x].login
-        + "," + body[x].contributions + "\n");
+      fs.appendFileSync('./relevantinfo/wagoodman-contributors.csv',
+      body[x].login  + "," + body[x].contributions + "\n");
   }
   //console.log(body);
 });
@@ -76,8 +76,8 @@ client.get('/repos/pcottle/learnGitBranching/contributors', {}, function (err,
     "login,contributions\n");
   for(var x in body) {
     if(body.hasOwnProperty(x))
-      fs.appendFileSync('./relevantinfo/pcottle-contributors.csv', body[x].login
-        + "," + body[x].contributions + "\n");
+      fs.appendFileSync('./relevantinfo/pcottle-contributors.csv',
+      body[x].login + "," + body[x].contributions + "\n");
   }
   //console.log(body);
 });
