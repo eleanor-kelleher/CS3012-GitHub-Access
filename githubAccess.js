@@ -10,8 +10,8 @@ function (err, status, body, headers) {
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/vue-contributors.txt',
-      "{\"login\":\"" + body[x].login + ",\"contributions\":"
-      +  body[x].contributions + "\"},\n");
+      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      +  body[x].contributions + "},\n");
   }
   //console.log(body);
 });
@@ -23,8 +23,8 @@ function (err, status, body, headers) {
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/adobe-contributors.txt',
-      "{\"login\":\"" + body[x].login + ",\"contributions\":"
-      +  body[x].contributions + "\"},\n");
+      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      +  body[x].contributions + "},\n");
   }
   //console.log(body);
 });
@@ -36,8 +36,8 @@ function (err, status, body, headers) {
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/firecracker-contributors.txt',
-      "{\"login\":\"" + body[x].login + ",\"contributions\":"
-      +  body[x].contributions + "\"},\n");
+      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      +  body[x].contributions + "},\n");
   }
   //console.log(body);
 });
@@ -50,8 +50,8 @@ function (err, status, body, headers) {
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/minimaxir-contributors.txt',
-      "{\"login\":\"" + body[x].login + ",\"contributions\":"
-      +  body[x].contributions + "\"},\n");
+      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      +  body[x].contributions + "},\n");
   }
   //console.log(body);
 });
@@ -63,8 +63,8 @@ client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/wagoodman-contributors.txt',
-      "{\"login\":\"" + body[x].login + ",\"contributions\":"
-      +  body[x].contributions + "\"},\n");
+      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      +  body[x].contributions + "},\n");
   }
   //console.log(body);
 });
@@ -76,8 +76,8 @@ client.get('/repos/pcottle/learnGitBranching/contributors', {}, function (err,
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/pcottle-contributors.txt',
-      "{\"login\":\"" + body[x].login + ",\"contributions\":"
-      +  body[x].contributions + "\"},\n");
+      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      +  body[x].contributions + "},\n");
   }
   //console.log(body);
 });
