@@ -12,13 +12,16 @@
     <style type="text/css">
         .slice text {
           font-size: 10pt;
-          font-family: Arial;}
+          font-family: sans-serif;}
 
     </style>
   </head>
   <body>
-    <h2>Pie Chart</h2>
-    <h3>James Kelleher</h3>
+    <h1>Three User-Owned Repositories</h1>
+
+    <!-- USER  - PCOTTLE -->
+    <h2>Repository: learnGitBranching</h2>
+    <h3>Repository owned by user pcottle</h3>
     <script type="text/javascript">
 
     var margin = {top: 20, right: 20, bottom: 20, left: 20},
@@ -28,41 +31,99 @@
     var colour = d3.scale.category20c();
 
     var sizes30 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
-    pcottle = [{"y":0,"login":"pcottle","contributions":1407},
-    {"y":15,"login":"twmht","contributions":35},
-    {"y":30,"login":"JuhoKang","contributions":32},
-    {"y":45,"login":"sunshowers","contributions":20},
-    {"y":60,"login":"sPATROL","contributions":18},
-    {"y":75,"login":"coyl","contributions":15},
-    {"y":90,"login":"alexeiberkov","contributions":15},
-    {"y":105,"login":"aschrab","contributions":14},
-    {"y":120,"login":"bcbcarl","contributions":14},
-    {"y":135,"login":"ahonorat","contributions":10},
-    {"y":150,"login":"nem75","contributions":10},
-    {"y":165,"login":"nlehuby","contributions":9},
-    {"y":180,"login":"alexandear","contributions":8},
-    {"y":195,"login":"PanAeon","contributions":7},
-    {"y":210,"login":"donkirkby","contributions":6},
-    {"y":225,"login":"lroellin","contributions":6},
-    {"y":240,"login":"ptsoccer","contributions":6},
-    {"y":255,"login":"qiansen1386","contributions":5},
-    {"y":270,"login":"renderf0x","contributions":4},
-    {"y":285,"login":"filipefilardi","contributions":4},
-    {"y":300,"login":"rebangm","contributions":4},
-    {"y":315,"login":"marcolivierarsenault","contributions":4},
-    {"y":330,"login":"pengi","contributions":4},
-    {"y":345,"login":"waldyrious","contributions":4},
-    {"y":360,"login":"tym-network","contributions":4},
-    {"y":375,"login":"zhyu","contributions":4},
-    {"y":390,"login":"mgarciaisaia","contributions":4},
-    {"y":405,"login":"andriymoroz","contributions":3},
-    {"y":420,"login":"manurFR","contributions":3},
-    {"y":435,"login":"lhyqy5","contributions":3}];
+    pcottle = [{"y":0,"login":"pcottle","contributions":1407},{"y":15,"login":"twmht","contributions":35},
+    {"y":30,"login":"JuhoKang","contributions":32},{"y":45,"login":"sunshowers","contributions":20},
+    {"y":60,"login":"sPATROL","contributions":18},{"y":75,"login":"coyl","contributions":15},
+    {"y":90,"login":"alexeiberkov","contributions":15},{"y":105,"login":"aschrab","contributions":14},
+    {"y":120,"login":"bcbcarl","contributions":14},{"y":135,"login":"ahonorat","contributions":10},
+    {"y":150,"login":"nem75","contributions":10},{"y":165,"login":"nlehuby","contributions":9},
+    {"y":180,"login":"alexandear","contributions":8},{"y":195,"login":"PanAeon","contributions":7},
+    {"y":210,"login":"donkirkby","contributions":6},{"y":225,"login":"lroellin","contributions":6},
+    {"y":240,"login":"ptsoccer","contributions":6},{"y":255,"login":"qiansen1386","contributions":5},
+    {"y":270,"login":"renderf0x","contributions":4},{"y":285,"login":"filipefilardi","contributions":4},
+    {"y":300,"login":"rebangm","contributions":4},{"y":315,"login":"marcolivierarsenault","contributions":4},
+    {"y":330,"login":"pengi","contributions":4},{"y":345,"login":"waldyrious","contributions":4},
+    {"y":360,"login":"tym-network","contributions":4},{"y":375,"login":"zhyu","contributions":4},
+    {"y":390,"login":"mgarciaisaia","contributions":4},{"y":405,"login":"andriymoroz","contributions":3},
+    {"y":420,"login":"manurFR","contributions":3},{"y":435,"login":"lhyqy5","contributions":3}];
 
     //entire svg
     var vis1 = d3.select("body")
       .append("svg")
       .data([pcottle])
+        .attr("width", width)
+        .attr("height", height)
+      .append("svg:g")
+        .attr("transform", "translate(" + radius + "," + radius + ")")
+
+    //pie
+    var arc1 = d3.svg.arc()
+      .innerRadius(radius * 0.6).outerRadius(radius);
+
+    var pie1 = d3.layout.pie()
+      .value(function(d) { return d.contributions; });
+
+    var arcs1 = vis1.selectAll("g.slice")
+      .data(pie1)
+      .enter()
+        .append("svg:g")
+          .attr("class", "slice");
+
+        arcs1.append("svg:path")
+          .attr("fill", function(d, i) { return colour(i); } )
+          .attr("d", arc1);
+
+    //boxes
+    var arcboxes1 = d3.svg.symbol().type('square')
+		  .size(200);
+    var group1 = vis1.append('g')
+    	.attr('transform','translate('+ 370 +','+ - 215 + ')  rotate(90)');
+    var line1 = group1.selectAll('path')
+      .data(sizes30)
+    	.enter()
+    	.append('path')
+    	.attr('d',arcboxes1)
+    	.attr("fill", function(d, i) { return colour(i); } )
+    	.attr('transform',function(d,i){ return "translate("+(i*15)+","+(100)+")"; });
+
+    var text1 = vis1.selectAll("text")
+      .data(pcottle)
+      .enter()
+      .append("text");
+    var textLabels1 = text1
+      .attr("x", 285)
+      .attr("y", function (d) { return (-212 + d.y);})
+      .text( function (d) { return "Login: " + d.login + ", Contributions: " + d.contributions; })
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "10px");
+    </script>
+
+    <!-- USER - WAGOODMAN -->
+    <h2>Repository: dive</h2>
+    <h3>Repository owned by user wagoodman</h3>
+    <script type="text/javascript">
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+      width = 1000 - margin.right - margin.left,
+      height = 500 - margin.top - margin.bottom,
+      radius = height / 2;
+    var colour = d3.scale.category20c();
+
+    var sizes17 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    wagoodman = [{"y":0,"login":"wagoodman","contributions":119},{"y":15,"login":"willmurphyscode","contributions":27},
+    {"y":30,"login":"akshaychhajed","contributions":5},{"y":45,"login":"ChrisCinelli","contributions":4},
+    {"y":60,"login":"AnthonyMastrean","contributions":1},{"y":75,"login":"Jerry-BinWang","contributions":1},
+    {"y":90,"login":"muesli","contributions":1},{"y":105,"login":"julianxhokaxhiu","contributions":1},
+    {"y":120,"login":"justinclift","contributions":1},{"y":135,"login":"lloeki","contributions":1},
+    {"y":150,"login":"mickdekkers","contributions":1},{"y":165,"login":"nlowe","contributions":1},
+    {"y":180,"login":"trungnn","contributions":1},{"y":195,"login":"stigok","contributions":1},
+    {"y":210,"login":"slashdevsda","contributions":1},{"y":225,"login":"slash-cyberpunk","contributions":1},
+    {"y":240,"login":"akramfares","contributions":1}];
+
+    //entire svg
+    var vis1 = d3.select("body")
+      .append("svg")
+      .data([wagoodman])
         .attr("width", width)
         .attr("height", height)
       .append("svg:g")
@@ -89,10 +150,88 @@
     //boxes
     var arcboxes1 = d3.svg.symbol().type('square')
 		  .size(200);
-
     var group1 = vis1.append('g')
     	.attr('transform','translate('+ 370 +','+ - 215 + ')  rotate(90)');
+    var line1 = group1.selectAll('path')
+      .data(sizes17)
+    	.enter()
+    	.append('path')
+    	.attr('d',arcboxes1)
+    	.attr("fill", function(d, i) { return colour(i); } )
+    	.attr('transform',function(d,i){ return "translate("+(i*15)+","+(100)+")"; });
 
+    var text1 = vis1.selectAll("text")
+      .data(wagoodman)
+      .enter()
+      .append("text");
+    var textLabels1 = text1
+      .attr("x", 285)
+      .attr("y", function (d) { return (-212 + d.y);})
+      .text( function (d) { return "Login: " + d.login + ", Contributions: " + d.contributions; })
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "10px");
+    </script>
+    
+    <!-- USER - MINIMAXIR -->
+    <h2>Repository: big-list-of-naughty-strings</h2>
+    <h3>Repository owned by user minimaxir</h3>
+    <script type="text/javascript">
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+      width = 1000 - margin.right - margin.left,
+      height = 500 - margin.top - margin.bottom,
+      radius = height / 2;
+    var colour = d3.scale.category20c();
+
+    var sizes30 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    minimaxir = [{"y":0,"login":"minimaxir","contributions":110},{"y":15,"login":"jlennox","contributions":9},
+    {"y":30,"login":"06b","contributions":4},{"y":45,"login":"zackw","contributions":4},
+    {"y":60,"login":"dushmis","contributions":4},{"y":75,"login":"AnthonySteele","contributions":2},
+    {"y":90,"login":"sempf","contributions":2},{"y":105,"login":"Gadal","contributions":2},
+    {"y":120,"login":"Plazmaz","contributions":2},{"y":135,"login":"hooriza","contributions":2},
+    {"y":150,"login":"donatj","contributions":2},{"y":165,"login":"mariusschulz","contributions":2},
+    {"y":180,"login":"amaboura","contributions":2},{"y":195,"login":"clickthisnick","contributions":2},
+    {"y":210,"login":"patch","contributions":2},{"y":225,"login":"romuald","contributions":2},
+    {"y":240,"login":"lazreg87","contributions":2},{"y":255,"login":"stuartpb","contributions":2},
+    {"y":270,"login":"Towerful","contributions":2},{"y":285,"login":"benpious","contributions":2},
+    {"y":300,"login":"joshuaduffy","contributions":2},{"y":315,"login":"abotsis","contributions":1},
+    {"y":330,"login":"adamborowski","contributions":1},{"y":345,"login":"ataylor32","contributions":1},
+    {"y":360,"login":"aesopwolf","contributions":1},{"y":375,"login":"Avaq","contributions":1},
+    {"y":390,"login":"kAworu","contributions":1},{"y":405,"login":"annashipman","contributions":1},
+    {"y":420,"login":"thebouv","contributions":1},{"y":435,"login":"charlier","contributions":1}];
+
+    //entire svg
+    var vis1 = d3.select("body")
+      .append("svg")
+      .data([minimaxir])
+        .attr("width", width)
+        .attr("height", height)
+      .append("svg:g")
+        .attr("transform", "translate(" + radius + "," + radius + ")")
+
+    //pie
+    var arc1 = d3.svg.arc()
+      .innerRadius(radius * 0.6)
+      .outerRadius(radius);
+
+    var pie1 = d3.layout.pie()
+      .value(function(d) { return d.contributions; });
+
+    var arcs1 = vis1.selectAll("g.slice")
+      .data(pie1)
+      .enter()
+        .append("svg:g")
+          .attr("class", "slice");
+
+        arcs1.append("svg:path")
+          .attr("fill", function(d, i) { return colour(i); } )
+          .attr("d", arc1);
+
+    //boxes
+    var arcboxes1 = d3.svg.symbol().type('square')
+		  .size(200);
+    var group1 = vis1.append('g')
+    	.attr('transform','translate('+ 370 +','+ - 215 + ')  rotate(90)');
     var line1 = group1.selectAll('path')
       .data(sizes30)
     	.enter()
@@ -102,10 +241,9 @@
     	.attr('transform',function(d,i){ return "translate("+(i*15)+","+(100)+")"; });
 
     var text1 = vis1.selectAll("text")
-      .data(pcottle)
+      .data(minimaxir)
       .enter()
       .append("text");
-
     var textLabels1 = text1
       .attr("x", 285)
       .attr("y", function (d) { return (-212 + d.y);})
@@ -113,9 +251,6 @@
       .attr("font-family", "sans-serif")
       .attr("font-size", "10px");
     </script>
-
-    <h4>User: pcottle</h4>
-    <h4>Repository: learnGitBranching</h4>
 
   </body>
 </html>
