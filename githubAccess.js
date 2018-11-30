@@ -7,11 +7,13 @@ var fs = require('fs');
 client.get('repos/vuejs/jp.vuejs.org/contributors', {},
 function (err, status, body, headers) {
   fs.appendFileSync('./relevantinfo/vue-contributors.txt',"");
+  var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/vue-contributors.txt',
-      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      "{\"y\":" + incr +",\"login\":\"" + body[x].login + "\",\"contributions\":"
       +  body[x].contributions + "},\n");
+    incr = incr + 15;
   }
   //console.log(body);
 });
@@ -20,11 +22,13 @@ function (err, status, body, headers) {
 client.get('/repos/adobe/brackets-app/contributors', {},
 function (err, status, body, headers) {
   fs.appendFileSync('./relevantinfo/adobe-contributors.txt',"");
+  var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/adobe-contributors.txt',
-      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      "{\"y\":" + incr +",\"login\":\"" + body[x].login + "\",\"contributions\":"
       +  body[x].contributions + "},\n");
+    incr = incr + 15;
   }
   //console.log(body);
 });
@@ -33,11 +37,13 @@ function (err, status, body, headers) {
 client.get('/repos/firecracker-microvm/firecracker/contributors', {},
 function (err, status, body, headers) {
   fs.appendFileSync('./relevantinfo/firecracker-contributors.txt',"");
+  var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/firecracker-contributors.txt',
-      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      "{\"y\":" + incr +",\"login\":\"" + body[x].login + "\",\"contributions\":"
       +  body[x].contributions + "},\n");
+    incr = incr + 15;
   }
   //console.log(body);
 });
@@ -47,11 +53,13 @@ function (err, status, body, headers) {
 client.get('/repos/minimaxir/big-list-of-naughty-strings/contributors', {},
 function (err, status, body, headers) {
   fs.appendFileSync('./relevantinfo/minimaxir-contributors.txt',"");
+  var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/minimaxir-contributors.txt',
-      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      "{\"y\":" + incr +",\"login\":\"" + body[x].login + "\",\"contributions\":"
       +  body[x].contributions + "},\n");
+    incr = incr + 15;
   }
   //console.log(body);
 });
@@ -60,11 +68,13 @@ function (err, status, body, headers) {
 client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
   body, headers) {
   fs.appendFileSync('./relevantinfo/wagoodman-contributors.txt',"");
+  var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/wagoodman-contributors.txt',
-      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      "{\"y\":" + incr +",\"login\":\"" + body[x].login + "\",\"contributions\":"
       +  body[x].contributions + "},\n");
+    incr = incr + 15;
   }
   //console.log(body);
 });
@@ -73,11 +83,13 @@ client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
 client.get('/repos/pcottle/learnGitBranching/contributors', {}, function (err,
   status, body, headers) {
   fs.appendFileSync('./relevantinfo/pcottle-contributors.txt',"");
+  var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
       fs.appendFileSync('./relevantinfo/pcottle-contributors.txt',
-      "{\"login\":\"" + body[x].login + "\",\"contributions\":"
+      "{\"y\":" + incr +",\"login\":\"" + body[x].login + "\",\"contributions\":"
       +  body[x].contributions + "},\n");
+    incr = incr + 15;
   }
   //console.log(body);
 });
