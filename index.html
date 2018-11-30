@@ -13,7 +13,15 @@
         .slice text {
           font-size: 10pt;
           font-family: sans-serif;}
+        .html, body {
+          height: 100%;}
+        html {
+            display: table;
+            margin: auto;}
 
+        body {
+            display: table-cell;
+            vertical-align: middle;}
     </style>
   </head>
   <body>
@@ -28,7 +36,7 @@
       width = 1000 - margin.right - margin.left,
       height = 500 - margin.top - margin.bottom,
       radius = height / 2;
-    var colour = d3.scale.category20c();
+    var colour = d3.scale.category20b();
 
     var sizes30 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     pcottle = [{"y":0,"login":"pcottle","contributions":1407},{"y":15,"login":"twmht","contributions":35},
@@ -107,7 +115,7 @@
       width = 1000 - margin.right - margin.left,
       height = 500 - margin.top - margin.bottom,
       radius = height / 2;
-    var colour = d3.scale.category20c();
+    var colour = d3.scale.category20b();
 
     var sizes17 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     wagoodman = [{"y":0,"login":"wagoodman","contributions":119},{"y":15,"login":"willmurphyscode","contributions":27},
@@ -171,7 +179,7 @@
       .attr("font-family", "sans-serif")
       .attr("font-size", "10px");
     </script>
-    
+
     <!-- USER - MINIMAXIR -->
     <h2>Repository: big-list-of-naughty-strings</h2>
     <h3>Repository owned by user minimaxir</h3>
@@ -181,7 +189,7 @@
       width = 1000 - margin.right - margin.left,
       height = 500 - margin.top - margin.bottom,
       radius = height / 2;
-    var colour = d3.scale.category20c();
+    var colour = d3.scale.category20b();
 
     var sizes30 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
     minimaxir = [{"y":0,"login":"minimaxir","contributions":110},{"y":15,"login":"jlennox","contributions":9},
@@ -252,5 +260,239 @@
       .attr("font-size", "10px");
     </script>
 
+    <!--
+    OTHER
+    REPOS
+    -->
+
+    <h1>Three Organisation-Owned Repositories</h1>
+    <!-- ORGANISATION - FIRECRACKER -->
+    <h2>Repository: firecracker</h2>
+    <h3>Repository owned by organisation firecracker-microvm</h3>
+    <script type="text/javascript">
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+      width = 1000 - margin.right - margin.left,
+      height = 500 - margin.top - margin.bottom,
+      radius = height / 2;
+    var colour = d3.scale.category20c();
+
+    var sizes25 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    firecracker = [{"y":0,"login":"andreeaflorescu","contributions":223},{"y":15,"login":"dianpopa","contributions":166},
+    {"y":30,"login":"acatangiu","contributions":151},{"y":45,"login":"alexandruag","contributions":151},
+    {"y":60,"login":"aghecenco","contributions":90},{"y":75,"login":"raduweiss","contributions":41},
+    {"y":90,"login":"dhrgit","contributions":20},{"y":105,"login":"alexbranciog","contributions":9},
+    {"y":120,"login":"tim-deegan-aws","contributions":5},{"y":135,"login":"mswilson","contributions":4},
+    {"y":150,"login":"ionitb","contributions":3},{"y":165,"login":"nmeyerhans","contributions":3},
+    {"y":180,"login":"arun-gupta","contributions":2},{"y":195,"login":"alexwlchan","contributions":1},
+    {"y":210,"login":"filipposironi","contributions":1},{"y":225,"login":"gregbdunn","contributions":1},
+    {"y":240,"login":"hyandell","contributions":1},{"y":255,"login":"mtorromeo","contributions":1},
+    {"y":270,"login":"rn","contributions":1},{"y":285,"login":"sejr","contributions":1},
+    {"y":300,"login":"rsriprac","contributions":1},{"y":315,"login":"sftim","contributions":1},
+    {"y":330,"login":"weixiao-huang","contributions":1},{"y":345,"login":"germangb","contributions":1},
+    {"y":360,"login":"maciejhirsz","contributions":1}];
+
+    //entire svg
+    var vis1 = d3.select("body")
+      .append("svg")
+      .data([firecracker])
+        .attr("width", width)
+        .attr("height", height)
+      .append("svg:g")
+        .attr("transform", "translate(" + radius + "," + radius + ")")
+
+    //pie
+    var arc1 = d3.svg.arc()
+      .innerRadius(radius * 0.6).outerRadius(radius);
+
+    var pie1 = d3.layout.pie()
+      .value(function(d) { return d.contributions; });
+
+    var arcs1 = vis1.selectAll("g.slice")
+      .data(pie1)
+      .enter()
+        .append("svg:g")
+          .attr("class", "slice");
+
+        arcs1.append("svg:path")
+          .attr("fill", function(d, i) { return colour(i); } )
+          .attr("d", arc1);
+
+    //boxes
+    var arcboxes1 = d3.svg.symbol().type('square')
+		  .size(200);
+    var group1 = vis1.append('g')
+    	.attr('transform','translate('+ 370 +','+ - 215 + ')  rotate(90)');
+    var line1 = group1.selectAll('path')
+      .data(sizes25)
+    	.enter()
+    	.append('path')
+    	.attr('d',arcboxes1)
+    	.attr("fill", function(d, i) { return colour(i); } )
+    	.attr('transform',function(d,i){ return "translate("+(i*15)+","+(100)+")"; });
+
+    var text1 = vis1.selectAll("text")
+      .data(firecracker)
+      .enter()
+      .append("text");
+    var textLabels1 = text1
+      .attr("x", 285)
+      .attr("y", function (d) { return (-212 + d.y);})
+      .text( function (d) { return "Login: " + d.login + ", Contributions: " + d.contributions; })
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "10px");
+    </script>
+
+    <!-- ORGANISATION - ADOBE -->
+    <h2>Repository: brackets-app</h2>
+    <h3>Repository owned by organisation adobe</h3>
+    <script type="text/javascript">
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+      width = 1000 - margin.right - margin.left,
+      height = 500 - margin.top - margin.bottom,
+      radius = height / 2;
+    var colour = d3.scale.category20c();
+
+    var sizes14 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    adobe = [{"y":0,"login":"gruehle","contributions":107},{"y":15,"login":"chrisbank","contributions":69},
+    {"y":30,"login":"tvoliter","contributions":62},{"y":45,"login":"RaymondLim","contributions":24},
+    {"y":60,"login":"njx","contributions":21},{"y":75,"login":"redmunds","contributions":17},
+    {"y":90,"login":"joelrbrandt","contributions":13},{"y":105,"login":"jasonsanjose","contributions":12},
+    {"y":120,"login":"pthiess","contributions":7},{"y":135,"login":"conradz","contributions":3},
+    {"y":150,"login":"peterflynn","contributions":2},{"y":165,"login":"filmaj","contributions":1},
+    {"y":180,"login":"GarthDB","contributions":1},{"y":195,"login":"mheuser","contributions":1}];
+
+    //entire svg
+    var vis1 = d3.select("body")
+      .append("svg")
+      .data([adobe])
+        .attr("width", width)
+        .attr("height", height)
+      .append("svg:g")
+        .attr("transform", "translate(" + radius + "," + radius + ")")
+
+    //pie
+    var arc1 = d3.svg.arc()
+      .innerRadius(radius * 0.6)
+      .outerRadius(radius);
+
+    var pie1 = d3.layout.pie()
+      .value(function(d) { return d.contributions; });
+
+    var arcs1 = vis1.selectAll("g.slice")
+      .data(pie1)
+      .enter()
+        .append("svg:g")
+          .attr("class", "slice");
+
+        arcs1.append("svg:path")
+          .attr("fill", function(d, i) { return colour(i); } )
+          .attr("d", arc1);
+
+    //boxes
+    var arcboxes1 = d3.svg.symbol().type('square')
+		  .size(200);
+    var group1 = vis1.append('g')
+    	.attr('transform','translate('+ 370 +','+ - 215 + ')  rotate(90)');
+    var line1 = group1.selectAll('path')
+      .data(sizes14)
+    	.enter()
+    	.append('path')
+    	.attr('d',arcboxes1)
+    	.attr("fill", function(d, i) { return colour(i); } )
+    	.attr('transform',function(d,i){ return "translate("+(i*15)+","+(100)+")"; });
+
+    var text1 = vis1.selectAll("text")
+      .data(adobe)
+      .enter()
+      .append("text");
+    var textLabels1 = text1
+      .attr("x", 285)
+      .attr("y", function (d) { return (-212 + d.y);})
+      .text( function (d) { return "Login: " + d.login + ", Contributions: " + d.contributions; })
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "10px");
+    </script>
+
+    <!-- ORGANISATION - VUEJS -->
+    <h2>Repository: jp.vue.org</h2>
+    <h3>Repository owned by organisation vuejs</h3>
+    <script type="text/javascript">
+
+    var margin = {top: 20, right: 20, bottom: 20, left: 20},
+      width = 1000 - margin.right - margin.left,
+      height = 500 - margin.top - margin.bottom,
+      radius = height / 2;
+    var colour = d3.scale.category20c();
+
+    var sizes30 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+    vuejs = [{"y":0,"login":"kazupon","contributions":962},{"y":15,"login":"yyx990803","contributions":489},
+    {"y":30,"login":"vuejs-jp-bot","contributions":223},{"y":45,"login":"re-fort","contributions":120},
+    {"y":60,"login":"potato4d","contributions":64},{"y":75,"login":"chi-bd","contributions":60},
+    {"y":90,"login":"chrisvfritz","contributions":51},{"y":105,"login":"mono0x","contributions":23},
+    {"y":120,"login":"hashrock","contributions":22},{"y":135,"login":"desigrammer","contributions":21},
+    {"y":150,"login":"positiveflat","contributions":15},{"y":165,"login":"Alex-Sokolov","contributions":14},
+    {"y":180,"login":"showwin","contributions":13},{"y":195,"login":"amedora","contributions":8},
+    {"y":210,"login":"tejitak","contributions":8},{"y":225,"login":"38elements","contributions":5},
+    {"y":240,"login":"teinen","contributions":5},{"y":255,"login":"crswll","contributions":5},
+    {"y":270,"login":"kojimakazuto","contributions":5},{"y":285,"login":"kitak","contributions":5},
+    {"y":300,"login":"ktsn","contributions":5},{"y":315,"login":"zakuro9715","contributions":5},
+    {"y":330,"login":"Haeresis","contributions":4},{"y":345,"login":"kaorun343","contributions":4},
+    {"y":360,"login":"psalaets","contributions":4},{"y":375,"login":"phanan","contributions":4},
+    {"y":390,"login":"waterada","contributions":4},{"y":405,"login":"yasunobuigarashi","contributions":4},
+    {"y":420,"login":"cheeses2","contributions":4},{"y":435,"login":"sapics","contributions":4}];
+
+    //entire svg
+    var vis1 = d3.select("body")
+      .append("svg")
+      .data([vuejs])
+        .attr("width", width)
+        .attr("height", height)
+      .append("svg:g")
+        .attr("transform", "translate(" + radius + "," + radius + ")")
+
+    //pie
+    var arc1 = d3.svg.arc()
+      .innerRadius(radius * 0.6)
+      .outerRadius(radius);
+
+    var pie1 = d3.layout.pie()
+      .value(function(d) { return d.contributions; });
+
+    var arcs1 = vis1.selectAll("g.slice")
+      .data(pie1)
+      .enter()
+        .append("svg:g")
+          .attr("class", "slice");
+
+        arcs1.append("svg:path")
+          .attr("fill", function(d, i) { return colour(i); } )
+          .attr("d", arc1);
+
+    //boxes
+    var arcboxes1 = d3.svg.symbol().type('square')
+		  .size(200);
+    var group1 = vis1.append('g')
+    	.attr('transform','translate('+ 370 +','+ - 215 + ')  rotate(90)');
+    var line1 = group1.selectAll('path')
+      .data(sizes30)
+    	.enter()
+    	.append('path')
+    	.attr('d',arcboxes1)
+    	.attr("fill", function(d, i) { return colour(i); } )
+    	.attr('transform',function(d,i){ return "translate("+(i*15)+","+(100)+")"; });
+
+    var text1 = vis1.selectAll("text")
+      .data(vuejs)
+      .enter()
+      .append("text");
+    var textLabels1 = text1
+      .attr("x", 285)
+      .attr("y", function (d) { return (-212 + d.y);})
+      .text( function (d) { return "Login: " + d.login + ", Contributions: " + d.contributions; })
+      .attr("font-family", "sans-serif")
+      .attr("font-size", "10px");
+    </script>
   </body>
 </html>
