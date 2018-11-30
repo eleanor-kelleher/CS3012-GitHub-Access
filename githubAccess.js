@@ -6,7 +6,6 @@ var fs = require('fs');
 // ORGANISATION vuejs - vue
 client.get('repos/vuejs/jp.vuejs.org/contributors', {},
 function (err, status, body, headers) {
-  fs.appendFileSync('./relevantinfo/vue-contributors.txt',"");
   var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
@@ -21,7 +20,6 @@ function (err, status, body, headers) {
 // ORGANISATION adobe - brackets-app
 client.get('/repos/adobe/brackets-app/contributors', {},
 function (err, status, body, headers) {
-  fs.appendFileSync('./relevantinfo/adobe-contributors.txt',"");
   var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
@@ -36,7 +34,6 @@ function (err, status, body, headers) {
 //ORGANISATION firecracker-microvm/firecracker
 client.get('/repos/firecracker-microvm/firecracker/contributors', {},
 function (err, status, body, headers) {
-  fs.appendFileSync('./relevantinfo/firecracker-contributors.txt',"");
   var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
@@ -52,7 +49,6 @@ function (err, status, body, headers) {
 // USER minimaxir - big-list-of-naughty-strings
 client.get('/repos/minimaxir/big-list-of-naughty-strings/contributors', {},
 function (err, status, body, headers) {
-  fs.appendFileSync('./relevantinfo/minimaxir-contributors.txt',"");
   var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
@@ -67,7 +63,6 @@ function (err, status, body, headers) {
 // USER wagoodman - dive
 client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
   body, headers) {
-  fs.appendFileSync('./relevantinfo/wagoodman-contributors.txt',"");
   var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
@@ -82,7 +77,6 @@ client.get('/repos/wagoodman/dive/contributors', {}, function (err, status,
 // USER pcottle - learnGitBranching
 client.get('/repos/pcottle/learnGitBranching/contributors', {}, function (err,
   status, body, headers) {
-  fs.appendFileSync('./relevantinfo/pcottle-contributors.txt',"");
   var incr = 0;
   for(var x in body) {
     if(body.hasOwnProperty(x))
